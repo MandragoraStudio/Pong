@@ -1,3 +1,5 @@
+from Util import *
+
 class Jugador:
     #clase jugador
 
@@ -19,4 +21,5 @@ class Jugador:
 	if self.abajo:
             self.vx+=1
         self.modelo.setPos(self.modelo,self.vx,self.vy,self.vz)
+        self.vx=lerp(self.vx)
 	return task.cont
