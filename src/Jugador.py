@@ -21,5 +21,6 @@ class Jugador:
 	if self.abajo:
             self.vx+=1
         self.modelo.setPos(self.modelo,self.vx,self.vy,self.vz)
-        self.vx=lerp(self.vx)
+        rozamiento=0.3
+        self.vx=lerp(self.vx,0,rozamiento)
 	return task.cont
