@@ -13,6 +13,13 @@ class MyApp(ShowBase):
 		ShowBase.__init__(self)
 		# Disable the camera trackball controls.
 		self.disableMouse()
+
+                # Initialize the collision traverser.
+                base.cTrav = CollisionTraverser()
+
+                # Initialize the Pusher collision handler.
+                pusher = CollisionHandlerPusher()
+
 		"""
 		# Load the environment model.
 		self.environ = self.loader.loadModel("models/environment")
@@ -39,22 +46,39 @@ class MyApp(ShowBase):
 
 
 		self.player1 = Jugador(self)
-		
+
 		self.player2 = Jugador(self)
 
-                #models/misc/sphere.egg.pz
-		self.pelota = self.loader.loadModel("models/misc/sphere.egg.pz")
-		self.pelota.setScale(1, 1, 1)
-		self.pelota.reparentTo(self.render)
-	
 		self.player1.modelo.setR(90)
 		self.player1.modelo.setPos(-130,0,20)
-
-		
+                # Create a collision node for this object.
+                cNode = CollisionNode('player1')
+		# Attach a collision sphere solid to the collision node.
+                cNode.addSolid(CollisionTube(0, 0, 0, 90, 0, 0, 15))
+                player1C = self.player1.modelo.attachNewNode(cNode)
+                player1C.show();
 		self.player2.modelo.setR(90)
 		self.player2.modelo.setPos(170,0,20)
-	
+                # Create a collision node for this object.
+                cNode = CollisionNode('player2')
+                # Attach a collision sphere solid to the collision node.
+                cNode.addSolid(CollisionTube(0, 0, 0, 90, 0, 0, 15))
+                player2C = self.player2.modelo.attachNewNode(cNode)
+                player2C.show();
+
+                self.pelota = self.loader.loadModel("models/misc/sphere.egg.pz")
+		self.pelota.setScale(1, 1, 1)
+		self.pelota.reparentTo(self.render)
 		self.pelota.setPos(0,0,20)
+
+                # Create a collision node for this object.
+                cNode = CollisionNode('pelota')
+                # Attach a collision sphere solid to the collision node.
+                cNode.addSolid(CollisionSphere(0, 0, 0, 1.5))
+                pelotaC = self.pelota.attachNewNode(cNode)
+
+                base.cTrav.addCollider(pelotaC, pusher)
+                pusher.addCollider(pelotaC, self.pelota, base.drive.node())
 	
 		self.camera.setPos(20,-500,-20)
 	
