@@ -11,7 +11,6 @@ from direct.showbase.ShowBase import ShowBase
 class MyApp(ShowBase):
 	def __init__(self):
 		ShowBase.__init__(self)
- 
 		# Disable the camera trackball controls.
 		self.disableMouse()
 		"""
@@ -57,7 +56,7 @@ class MyApp(ShowBase):
 	
 		self.pelota.setPos(0,0,20)
 	
-		self.camera.setPos(30,-500,0)
+		self.camera.setPos(20,-500,-20)
 	
 		dlight = DirectionalLight('my dlight')
 		dlnp = render.attachNewNode(dlight)
@@ -90,19 +89,7 @@ class MyApp(ShowBase):
 		#self.taskMgr.add(player2c,'control del jugador 2', extraArgs=[self], appendTask=True)
 		self.taskMgr.add(pelotac,'control de la pelota', extraArgs=[self], appendTask=True)
 
-def player1c(self,task):
-	if self.arriba1:
-            self.player1.vx-=1
-	if self.abajo1:
-            self.player1.vx+=1
-        self.player1.modelo.setPos(self.player1.modelo,self.player1.vx,self.player1.vy,self.player1.vz)
-	return task.cont
-def player2c(self,task):
-	if self.arriba2:
-		self.player2.modelo.setPos(self.player2.modelo,-self.p2,0,0)
-	if self.abajo2:
-		self.player2.modelo.setPos(self.player2.modelo,self.p2,0,0)
-	return task.cont
+
 def pelotac(self,task):
 	self.pelota.setPos(self.px,self.py,self.pz)
 	self.px = self.px + 1

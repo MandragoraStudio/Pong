@@ -5,3 +5,7 @@ def lerp(self, other, factor):
         #    raise ValueError, "Mismatch in operand types \"float\" and \"byte\""
         lerped = (other - self) * factor + self
         return lerped
+def signo(numero):
+    if numero<0:
+        return -1
+    return 1
