@@ -44,11 +44,12 @@ class MyApp(ShowBase):
                 self.arriba2 = False
 
 
-
+                #carga los jugadores
 		self.player1 = Jugador(self)
 
 		self.player2 = Jugador(self)
 
+                #coloca al jugador 1
 		self.player1.modelo.setR(90)
 		self.player1.modelo.setPos(-130,0,20)
                 # Create a collision node for this object.
@@ -57,6 +58,8 @@ class MyApp(ShowBase):
                 cNode.addSolid(CollisionTube(0, 0, 0, 90, 0, 0, 15))
                 player1C = self.player1.modelo.attachNewNode(cNode)
                 player1C.show();
+
+                #coloca al jugador 2
 		self.player2.modelo.setR(90)
 		self.player2.modelo.setPos(170,0,20)
                 # Create a collision node for this object.
@@ -66,6 +69,7 @@ class MyApp(ShowBase):
                 player2C = self.player2.modelo.attachNewNode(cNode)
                 player2C.show();
 
+                #inicia y coloca pelota
                 self.pelota = self.loader.loadModel("models/misc/sphere.egg.pz")
 		self.pelota.setScale(1, 1, 1)
 		self.pelota.reparentTo(self.render)
@@ -79,7 +83,8 @@ class MyApp(ShowBase):
 
                 base.cTrav.addCollider(pelotaC, pusher)
                 pusher.addCollider(pelotaC, self.pelota, base.drive.node())
-	
+
+                #coloca la camara
 		self.camera.setPos(20,-500,-20)
 	
 		dlight = DirectionalLight('my dlight')

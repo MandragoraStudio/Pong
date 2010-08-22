@@ -6,6 +6,7 @@ def lerp(self, other, factor):
         lerped = (other - self) * factor + self
         return lerped
 def signo(numero):
+    #devuelve el signo del numero (-1,1)
     if numero<0:
         return -1
     return 1
