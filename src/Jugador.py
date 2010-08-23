@@ -19,7 +19,7 @@ class Jugador:
 	self.modelo.setScale(0.5, 0.5, 0.5)
 	self.modelo.reparentTo(juego.render)
 
-        #agrega el control del jugador al task manager
+        #agrega el update del jugador al task manager
         juego.taskMgr.add(self.update,'control del jugador', extraArgs=[self], appendTask=True)
 
     def update(self,unknown,task):

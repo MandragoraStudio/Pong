@@ -1,6 +1,7 @@
 
 from pandac.PandaModules import *
 from Jugador import *
+from Pelota import *
 from direct.showbase.ShowBase import ShowBase
 
 
@@ -42,7 +43,7 @@ class MyApp(ShowBase):
                 self.arriba1 = False
                 self.abajo2 = False
                 self.arriba2 = False
-
+                self.versusIA=False
 
                 #carga los jugadores
 		self.player1 = Jugador(self)
@@ -70,19 +71,16 @@ class MyApp(ShowBase):
                 player2C.show();
 
                 #inicia y coloca pelota
-                self.pelota = self.loader.loadModel("models/misc/sphere.egg.pz")
-		self.pelota.setScale(1, 1, 1)
-		self.pelota.reparentTo(self.render)
-		self.pelota.setPos(0,0,20)
+                self.pelota = Pelota(self)
 
                 # Create a collision node for this object.
                 cNode = CollisionNode('pelota')
                 # Attach a collision sphere solid to the collision node.
                 cNode.addSolid(CollisionSphere(0, 0, 0, 1.5))
-                pelotaC = self.pelota.attachNewNode(cNode)
+                pelotaC = self.pelota.modelo.attachNewNode(cNode)
 
                 base.cTrav.addCollider(pelotaC, pusher)
-                pusher.addCollider(pelotaC, self.pelota, base.drive.node())
+                pusher.addCollider(pelotaC, self.pelota.modelo, base.drive.node())
 
                 #coloca la camara
 		self.camera.setPos(20,-500,-20)
@@ -110,21 +108,25 @@ class MyApp(ShowBase):
 		self.accept('w-up',arriba1false,[self])
 		self.accept('s',abajo1true,[self])
 		self.accept('s-up',abajo1false,[self])
-		self.accept('o',arriba2true,[self])
-		self.accept('o-up',arriba2false,[self])
-		self.accept('l',abajo2true,[self])
-		self.accept('l-up',abajo2false,[self])
+                #inicia la IA o habilita el control del segundo jugador segun la variable "versusIA"
+                if(self.versusIA==False):
+                    self.accept('o',arriba2true,[self])
+                    self.accept('o-up',arriba2false,[self])
+                    self.accept('l',abajo2true,[self])
+                    self.accept('l-up',abajo2false,[self])
+                else:
+                    self.Ia=IA()
+                    self.taskMgr.add(self.Ia.update,'IA', extraArgs=[self], appendTask=True)
+
 		#self.taskMgr.add(player1c,'control del jugador 1', extraArgs=[self], appendTask=True)
 		#self.taskMgr.add(player2c,'control del jugador 2', extraArgs=[self], appendTask=True)
-		self.taskMgr.add(pelotac,'control de la pelota', extraArgs=[self], appendTask=True)
-
+		
 
 def pelotac(self,task):
-	self.pelota.setPos(self.px,self.py,self.pz)
+	self.pelota.modelo.setPos(self.px,self.py,self.pz)
 	self.px = self.px + 1
 	if self.px > 100:
 		self.px = -100
-	self.pelota.setScale(self.i,self.i,self.i)
 
         #self.pelota.setR(self.a)
         #self.a+=50
