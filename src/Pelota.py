@@ -16,7 +16,15 @@ class Pelota:
         #anande el update de la pelota al task manager
         juego.taskMgr.add(self.update,'control de la pelota', extraArgs=[self], appendTask=True)
 
+    def choca(self):
+        self.vx*=-1
+        self.jugador=self.juego.player1
+        if self.modelo.getX()>0:
+            self.jugador=self.juego.player2
+        self.vz=self.vz-(self.jugador.vx/20)
+
     def update(self,unkown,task):
         self.modelo.setPos(self.modelo,self.vx,self.vy,self.vz)
-	
+	if (self.modelo.getZ()+25)*signo(self.modelo.getZ())>120:
+            self.vz*=-1
         return task.cont
