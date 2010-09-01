@@ -36,7 +36,7 @@ class IA:
         #print "z: "+str(self.juego.player2.modelo.getZ())
         #print "x1: "+str(self.juego.player1.modelo.getX())
         #print "z1: "+str(self.juego.player1.modelo.getZ())
-        print "Jugador1: "+str(self.juego.puntos1)+" -- Jugador2: "+str(self.juego.puntos2)
+        #print "Jugador1: "+str(self.juego.puntos1)+" -- Jugador2: "+str(self.juego.puntos2)
         return self.juego.pelota.modelo.getZ()-(self.juego.player2.modelo.getZ())>0
 
     def pelotaporabajo(self):

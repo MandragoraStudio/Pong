@@ -50,3 +50,5 @@ class Pelota:
         self.vy=0 #velocidad en el eje y (no usar!! es la profundidad)
         self.vz=(0.1+random.random()*0.2)*(signo(random.random()-0.5)) # velocidad en el eje z
 	self.modelo.setPos(0,0,20)
+        self.juego.marcador.update()
+        print "Jugador1: "+str(self.juego.puntos1)+" -- Jugador2: "+str(self.juego.puntos2)

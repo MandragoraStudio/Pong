@@ -12,5 +12,5 @@ class ManejadorDeColisiones(DirectObject.DirectObject):
         messenger.clear()
         """
         self.pelota.choca()
-        print "la pelota ha chocado"
+        #print "la pelota ha chocado"
         #print entry
