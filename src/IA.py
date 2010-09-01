@@ -8,10 +8,10 @@ class IA:
 
     def update(self,unkown,task):
         if self.pelotaporencima():
-            print "---------------------------------arriba"
+            #print "---------------------------------arriba"
             self.arriba()
         elif self.pelotaporabajo():
-            print "---------------------------------abajo"
+            #print "---------------------------------abajo"
             self.abajo()
         else:
             self.parado()
@@ -31,11 +31,15 @@ class IA:
         self.juego.abajo2false()
 
     def pelotaporencima(self):
-        print self.juego.pelota.modelo.getZ()-21
-        print self.juego.player2.modelo.getX()-170
-        return self.juego.pelota.modelo.getZ()-21>self.juego.player2.modelo.getX()-160
+        #print self.juego.pelota.modelo.getZ()-(self.juego.player2.modelo.getZ())
+        #print "x: "+str(self.juego.player2.modelo.getX())
+        #print "z: "+str(self.juego.player2.modelo.getZ())
+        #print "x1: "+str(self.juego.player1.modelo.getX())
+        #print "z1: "+str(self.juego.player1.modelo.getZ())
+        print "Jugador1: "+str(self.juego.puntos1)+" -- Jugador2: "+str(self.juego.puntos2)
+        return self.juego.pelota.modelo.getZ()-(self.juego.player2.modelo.getZ())>0
 
     def pelotaporabajo(self):
-        return self.juego.pelota.modelo.getZ()-21<self.juego.player2.modelo.getX()-160
+        return self.juego.pelota.modelo.getZ()-(self.juego.player2.modelo.getZ()-45)<0
 
 

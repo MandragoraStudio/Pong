@@ -12,157 +12,166 @@ from direct.showbase.ShowBase import ShowBase
 
 
 class MyApp(ShowBase):
-	def __init__(self):
-		ShowBase.__init__(self)
-		# Disable the camera trackball controls.
-		self.disableMouse()
+    def __init__(self):
+            ShowBase.__init__(self)
+            # Disable the camera trackball controls.
+            self.disableMouse()
 
-                # Initialize the collision traverser.
-                base.cTrav = CollisionTraverser()
+            # Initialize the collision traverser.
+            base.cTrav = CollisionTraverser()
 
-                # Initialize the Pusher collision handler.
-                pusher = CollisionHandlerPusher()
-                pusher.addInPattern('pelota-into-player1')
-                pusher.addInPattern('pelota-into-player2')
+            # Initialize the Pusher collision handler.
+            pusher = CollisionHandlerPusher()
+            pusher.addInPattern('pelota-into-player1')
+            pusher.addInPattern('pelota-into-player2')
 
-		"""
-		# Load the environment model.
-		self.environ = self.loader.loadModel("models/environment")
-		# Reparent the model to render.
-		self.environ.reparentTo(self.render)
-		# Apply scale and position transforms on the model.
-		self.environ.setScale(0.25, 0.25, 0.25)
-		self.environ.setPos(-8, 42, 0)
-		"""
+            """
+            # Load the environment model.
+            self.environ = self.loader.loadModel("models/environment")
+            # Reparent the model to render.
+            self.environ.reparentTo(self.render)
+            # Apply scale and position transforms on the model.
+            self.environ.setScale(0.25, 0.25, 0.25)
+            self.environ.setPos(-8, 42, 0)
+            """
 
-		# inicializa variables
-                self.init_variables()
-
-                
-                #carga los jugadores
-		self.player1 = Jugador(self)
-
-		self.player2 = Jugador(self)
-
-                #coloca al jugador 1
-		self.player1.modelo.setR(90)
-		self.player1.modelo.setPos(-130,0,20)
-                # Create a collision node for this object.
-                cNode = CollisionNode('player1')
-		# Attach a collision sphere solid to the collision node.
-                cNode.addSolid(CollisionTube(0, 0, 0, 90, 0, 0, 15))
-                player1C = self.player1.modelo.attachNewNode(cNode)
-                player1C.show()
-
-                #coloca al jugador 2
-		self.player2.modelo.setR(90)
-		self.player2.modelo.setPos(170,0,20)
-                # Create a collision node for this object.
-                cNode = CollisionNode('player2')
-
-                # Attach a collision sphere solid to the collision node.
-                cNode.addSolid(CollisionTube(0, 0, 0, 90, 0, 0, 15))
-                player2C = self.player2.modelo.attachNewNode(cNode)
-                player2C.show()
-
-                #inicia y coloca pelota
-                self.pelota = Pelota(self)
-                #inicia el manejador de los eventos de las colisiones
-                manejador = ManejadorDeColisiones(self.pelota)
-                # Create a collision node for this object.
-                cNode = CollisionNode('pelota')
-                # Attach a collision sphere solid to the collision node.
-                cNode.addSolid(CollisionSphere(0, 0, 0, 1.0))
-                pelotaC = self.pelota.modelo.attachNewNode(cNode)
-                pelotaC.show()
-
-                base.cTrav.addCollider(pelotaC, pusher)
-                pusher.addCollider(pelotaC, self.pelota.modelo, base.drive.node())
-
-                #coloca la camara
-		self.camera.setPos(20,-500,-20)
-	
-		dlight = DirectionalLight('my dlight')
-		dlnp = render.attachNewNode(dlight)
-		dlnp.setHpr(20, 20, 0)
-		render.setLight(dlnp)
-	
-		dlight2 = DirectionalLight('my dlight2')
-		dlight2.setColor(Vec4(0.2, 0.2, 0.2, 0.1))
-		dlnp2 = render.attachNewNode(dlight2)
-		dlnp2.setHpr(180, -20, 0)
-		render.setLight(dlnp2)
-		
-		"""
-		global polvo
-		polvo = ParticleEffect()
-		polvo.loadConfig(Filename('dust.ptf'))
-		polvo.start()
-		polvo.setPos(3.000, 0.000, 2.250)
-		"""
-	
-		self.accept('w',self.arriba1true)
-		self.accept('w-up',self.arriba1false)
-		self.accept('s',self.abajo1true)
-		self.accept('s-up',self.abajo1false)
-                #inicia la IA o habilita el control del segundo jugador segun la variable "versusIA"
-                if(self.versusIA==False):
-                    self.accept('o',self.arriba2true)
-                    self.accept('o-up',self.arriba2false)
-                    self.accept('l',self.abajo2true)
-                    self.accept('l-up',self.abajo2false)
-                else:
-                    self.Ia=IA(self)
-                    self.taskMgr.add(self.Ia.update,'IA', extraArgs=[self], appendTask=True)
-
-		#self.taskMgr.add(player1c,'control del jugador 1', extraArgs=[self], appendTask=True)
-		#self.taskMgr.add(player2c,'control del jugador 2', extraArgs=[self], appendTask=True)
+            # inicializa variables
+            self.init_variables()
 
 
+            #carga los jugadores
+            self.player1 = Jugador(self)
 
-	def init_variables(self):
-            #inicializa variables
-            self.p1 = 1
-            self.p2 = 1
-            self.px = 1
-            self.py = 0
-            self.pz = 20
-            self.i=5
-            self.a=0
-            self.abajo1 = False
-            self.arriba1 = False
-            self.abajo2 = False
-            self.arriba2 = False
-            self.versusIA=False
+            self.player2 = Jugador(self)
 
-        def pelotac(self,task):
-                self.pelota.modelo.setPos(self.px,self.py,self.pz)
-                self.px = self.px + 1
-                if self.px > 100:
-                        self.px = -100
+            #coloca al jugador 1
+            self.player1.modelo.setR(90)
+            self.player1.modelo.setPos(-130,0,20)
+            # Create a collision node for this object.
+            cNode = CollisionNode('player1')
+            # Attach a collision sphere solid to the collision node.
+            cNode.addSolid(CollisionTube(0, 0, 0, 90, 0, 0, 15))
+            player1C = self.player1.modelo.attachNewNode(cNode)
+            player1C.show()
 
-                #self.pelota.setR(self.a)
-                #self.a+=50
-                #if self.a>360:
-                #    self.a=0
-                #self.i+=0.1
-                return task.cont
-        def arriba1true(self):
-                self.player1.arriba= True
-        def arriba1false(self):
-                self.player1.arriba= False
-        def abajo1true(self):
-                self.player1.abajo= True
-        def abajo1false(self):
-                self.player1.abajo= False
-        def arriba2true(self):
-                self.player2.arriba= True
-        def arriba2false(self):
-                self.player2.arriba= False
-        def abajo2true(self):
-                self.player2.abajo= True
-        def abajo2false(self):
-                self.player2.abajo= False
+            #coloca al jugador 2
+            self.player2.modelo.setR(90)
+            self.player2.modelo.setPos(170,0,20)
+            # Create a collision node for this object.
+            cNode = CollisionNode('player2')
+
+            # Attach a collision sphere solid to the collision node.
+            cNode.addSolid(CollisionTube(0, 0, 0, 90, 0, 0, 15))
+            player2C = self.player2.modelo.attachNewNode(cNode)
+            player2C.show()
+
+            #inicia y coloca pelota
+            self.pelota = Pelota(self)
+            #inicia el manejador de los eventos de las colisiones
+            manejador = ManejadorDeColisiones(self.pelota)
+            # Create a collision node for this object.
+            cNode = CollisionNode('pelota')
+            # Attach a collision sphere solid to the collision node.
+            cNode.addSolid(CollisionSphere(0, 0, 0, 1.0))
+            pelotaC = self.pelota.modelo.attachNewNode(cNode)
+            pelotaC.show()
+
+            base.cTrav.addCollider(pelotaC, pusher)
+            pusher.addCollider(pelotaC, self.pelota.modelo, base.drive.node())
+
+            #coloca la camara
+            self.camera.setPos(20,-500,-20)
+
+            dlight = DirectionalLight('my dlight')
+            dlnp = render.attachNewNode(dlight)
+            dlnp.setHpr(20, 20, 0)
+            render.setLight(dlnp)
+
+            dlight2 = DirectionalLight('my dlight2')
+            dlight2.setColor(Vec4(0.2, 0.2, 0.2, 0.1))
+            dlnp2 = render.attachNewNode(dlight2)
+            dlnp2.setHpr(180, -20, 0)
+            render.setLight(dlnp2)
+
+            """
+            global polvo
+            polvo = ParticleEffect()
+            polvo.loadConfig(Filename('dust.ptf'))
+            polvo.start()
+            polvo.setPos(3.000, 0.000, 2.250)
+            """
+
+            self.accept('w',self.arriba1true)
+            self.accept('w-up',self.arriba1false)
+            self.accept('s',self.abajo1true)
+            self.accept('s-up',self.abajo1false)
+            #inicia la IA o habilita el control del segundo jugador segun la variable "versusIA"
+            if(self.versusIA==False):
+                self.accept('o',self.arriba2true)
+                self.accept('o-up',self.arriba2false)
+                self.accept('l',self.abajo2true)
+                self.accept('l-up',self.abajo2false)
+            else:
+                self.Ia=IA(self)
+                self.taskMgr.add(self.Ia.update,'IA', extraArgs=[self], appendTask=True)
+
+            #self.taskMgr.add(player1c,'control del jugador 1', extraArgs=[self], appendTask=True)
+            #self.taskMgr.add(player2c,'control del jugador 2', extraArgs=[self], appendTask=True)
+
+
+
+    def init_variables(self):
+        #inicializa variables
+        self.p1 = 1
+        self.p2 = 1
+        self.px = 1
+        self.py = 0
+        self.pz = 20
+        self.i=5
+        self.a=0
+        self.abajo1 = False
+        self.arriba1 = False
+        self.abajo2 = False
+        self.arriba2 = False
+        self.versusIA=True
+        self.puntos1=0
+        self.puntos2=0
+
+    def pelotac(self,task):
+            self.pelota.modelo.setPos(self.px,self.py,self.pz)
+            self.px = self.px + 1
+            if self.px > 100:
+                    self.px = -100
+
+            #self.pelota.setR(self.a)
+            #self.a+=50
+            #if self.a>360:
+            #    self.a=0
+            #self.i+=0.1
+            return task.cont
+    def arriba1true(self):
+            self.player1.arriba= True
+    def arriba1false(self):
+            self.player1.arriba= False
+    def abajo1true(self):
+            self.player1.abajo= True
+    def abajo1false(self):
+            self.player1.abajo= False
+    def arriba2true(self):
+            self.player2.arriba= True
+    def arriba2false(self):
+            self.player2.arriba= False
+    def abajo2true(self):
+            self.player2.abajo= True
+    def abajo2false(self):
+            self.player2.abajo= False
+
+    def puntojugador2(self):
+        self.puntos2+=1
+        self.pelota.start()
+    def puntojugador1(self):
+        self.puntos1+=1
+        self.pelota.start()
 
  
 app = MyApp()
