@@ -85,8 +85,8 @@ class MyApp(ShowBase):
 
             # Initialize the Pusher collision handler.
             pusher = CollisionHandlerPusher()
-            pusher.addInPattern('pelota-into-player1')
-            pusher.addInPattern('pelota-into-player2')
+            pusher.addInPattern('pelota-again-player1')
+            #pusher.addInPattern('pelota-into-player2')
 
             """
             # Load the environment model.
@@ -110,6 +110,7 @@ class MyApp(ShowBase):
             #coloca al jugador 1
             self.player1.modelo.setR(90)
             self.player1.modelo.setPos(-130,0,20)
+
             # Create a collision node for this object.
             cNode = CollisionNode('player1')
             # Attach a collision sphere solid to the collision node.
