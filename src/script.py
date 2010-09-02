@@ -80,13 +80,7 @@ class MyApp(ShowBase):
         self.pelota.start()
 
     def inicia_partida(self):
-        # Initialize the collision traverser.
-            base.cTrav = CollisionTraverser()
-
-            # Initialize the Pusher collision handler.
-            pusher = CollisionHandlerPusher()
-            pusher.addInPattern('pelota-again-player1')
-            #pusher.addInPattern('pelota-into-player2')
+        
 
             """
             # Load the environment model.
@@ -111,23 +105,12 @@ class MyApp(ShowBase):
             self.player1.modelo.setR(90)
             self.player1.modelo.setPos(-130,0,20)
 
-            # Create a collision node for this object.
-            cNode = CollisionNode('player1')
-            # Attach a collision sphere solid to the collision node.
-            cNode.addSolid(CollisionTube(0, 0, 0, 90, 0, 0, 15))
-            player1C = self.player1.modelo.attachNewNode(cNode)
-            player1C.show()
+            
 
             #coloca al jugador 2
             self.player2.modelo.setR(90)
             self.player2.modelo.setPos(170,0,20)
-            # Create a collision node for this object.
-            cNode = CollisionNode('player2')
-
-            # Attach a collision sphere solid to the collision node.
-            cNode.addSolid(CollisionTube(0, 0, 0, 90, 0, 0, 15))
-            player2C = self.player2.modelo.attachNewNode(cNode)
-            player2C.show()
+            
 
 
 
@@ -138,17 +121,10 @@ class MyApp(ShowBase):
             #inicia y coloca pelota
             self.pelota = Pelota(self)
             #inicia el manejador de los eventos de las colisiones
-            manejador = ManejadorDeColisiones(self.pelota)
-            # Create a collision node for this object.
-            cNode = CollisionNode('pelota')
-            # Attach a collision sphere solid to the collision node.
-            cNode.addSolid(CollisionSphere(0, 0, 0, 1.0))
-            pelotaC = self.pelota.modelo.attachNewNode(cNode)
-            pelotaC.show()
+            manejador = ManejadorDeColisiones(self)
+            
 
-            base.cTrav.addCollider(pelotaC, pusher)
-            pusher.addCollider(pelotaC, self.pelota.modelo, base.drive.node())
-
+            
             #coloca la camara
             self.camera.setPos(20,-500,-20)
 

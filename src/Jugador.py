@@ -47,7 +47,9 @@ class Jugador:
             self.vx=-max
         #chocando contra el borde del campo
         if self.modelo.getZ()>self.bordesuperior:
+            self.vx=0
             self.modelo.setZ(self.bordesuperior)
         if self.modelo.getZ()<self.bordeinferior:
+            self.vx=0
             self.modelo.setZ(self.bordeinferior)
 	return task.cont

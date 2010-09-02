@@ -7,7 +7,9 @@ class IA:
 
 
     def update(self,unkown,task):
-        if self.pelotaporencima():
+        if self.pelotahapasado():
+            self.parado()
+        elif self.pelotaporencima():
             #print "---------------------------------arriba"
             self.arriba()
         elif self.pelotaporabajo():
@@ -41,5 +43,8 @@ class IA:
 
     def pelotaporabajo(self):
         return self.juego.pelota.modelo.getZ()-(self.juego.player2.modelo.getZ()-45)<0
+
+    def pelotahapasado(self):
+        return self.juego.pelota.modelo.getX()-self.juego.player2.modelo.getX()>10
 
 
