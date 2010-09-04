@@ -152,7 +152,7 @@ class MyApp(ShowBase):
                 self.accept('l',self.abajo2true)
                 self.accept('l-up',self.abajo2false)
             else:
-                self.Ia=IA(self)
+                self.Ia=IA2(self)
                 self.taskMgr.add(self.Ia.update,'IA', extraArgs=[self], appendTask=True)
  
 app = MyApp()
