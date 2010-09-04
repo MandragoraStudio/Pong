@@ -45,7 +45,7 @@ class IA:
         return self.juego.pelota.modelo.getZ()-(self.juego.player2.modelo.getZ()-45)<0
 
     def pelotahapasado(self):
-        return self.juego.pelota.modelo.getX()-self.juego.player2.modelo.getX()>10
+        return self.juego.pelota.modelo.getX()-self.juego.player2.modelo.getX()>0
 
 
 # Inteligencia artificial del pong
@@ -96,6 +96,6 @@ class IA2:
         return self.juego.pelota.modelo.getZ()-(self.juego.player2.modelo.getZ()-23)<0
 
     def pelotahapasado(self):
-        return self.juego.pelota.modelo.getX()-self.juego.player2.modelo.getX()>10
+        return self.juego.pelota.modelo.getX()-self.juego.player2.modelo.getX()>0
 
 
