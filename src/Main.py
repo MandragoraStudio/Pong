@@ -42,6 +42,52 @@ class MyApp(ShowBase):
         self.puntos1=0
         self.puntos2=0
 
+    def loadmodels(self):
+        #aqui se deben cargar los modelos para el juego
+        #carga los jugadores
+        self.player1 = Jugador(self)
+
+        self.player2 = Jugador(self)
+
+        #coloca al jugador 1
+        self.player1.modelo.setR(90)
+        self.player1.modelo.setPos(-130,0,20)
+
+
+
+        #coloca al jugador 2
+        self.player2.modelo.setR(90)
+        self.player2.modelo.setPos(170,0,20)
+
+
+
+
+        #iniciar marcador
+        self.marcador=Marcador(self)
+
+
+        #inicia y coloca pelota
+        self.pelota = Pelota(self)
+        #inicia el manejador de los eventos de las colisiones
+        self.manejador = ManejadorDeColisiones(self)
+
+
+
+        #coloca la camara
+        self.camera.setPos(20,-500,-20)
+
+        dlight = DirectionalLight('my dlight')
+        dlnp = render.attachNewNode(dlight)
+        dlnp.setHpr(20, 20, 0)
+        render.setLight(dlnp)
+
+        dlight2 = DirectionalLight('my dlight2')
+        dlight2.setColor(Vec4(0.2, 0.2, 0.2, 0.1))
+        dlnp2 = render.attachNewNode(dlight2)
+        dlnp2.setHpr(180, -20, 0)
+        render.setLight(dlnp2)
+
+
     def pelotac(self,task):
             self.pelota.modelo.setPos(self.px,self.py,self.pz)
             self.px = self.px + 1
@@ -94,52 +140,7 @@ class MyApp(ShowBase):
 
             # inicializa variables
             self.init_variables()
-
-
-            #carga los jugadores
-            self.player1 = Jugador(self)
-
-            self.player2 = Jugador(self)
-
-            #coloca al jugador 1
-            self.player1.modelo.setR(90)
-            self.player1.modelo.setPos(-130,0,20)
-
-            
-
-            #coloca al jugador 2
-            self.player2.modelo.setR(90)
-            self.player2.modelo.setPos(170,0,20)
-            
-
-
-
-            #iniciar marcador
-            self.marcador=Marcador(self)
-
-            
-            #inicia y coloca pelota
-            self.pelota = Pelota(self)
-            #inicia el manejador de los eventos de las colisiones
-            manejador = ManejadorDeColisiones(self)
-            
-
-            
-            #coloca la camara
-            self.camera.setPos(20,-500,-20)
-
-            dlight = DirectionalLight('my dlight')
-            dlnp = render.attachNewNode(dlight)
-            dlnp.setHpr(20, 20, 0)
-            render.setLight(dlnp)
-
-            dlight2 = DirectionalLight('my dlight2')
-            dlight2.setColor(Vec4(0.2, 0.2, 0.2, 0.1))
-            dlnp2 = render.attachNewNode(dlight2)
-            dlnp2.setHpr(180, -20, 0)
-            render.setLight(dlnp2)
-
-
+            self.loadmodels()
 
             self.accept('w',self.arriba1true)
             self.accept('w-up',self.arriba1false)

@@ -1,5 +1,6 @@
 from Util import *
-
+#NOTA: debido a un cambio de coordenadas, la vx mueve al jugador en el eje Z
+#esto es debido a que aunque la vx se aplica al movimiento en el eje X, este esta hecho tomando como referencia el modelo, que esta girado 90 grados
 class Jugador:
     #clase jugador
 
