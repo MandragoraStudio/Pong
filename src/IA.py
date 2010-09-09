@@ -1,4 +1,4 @@
-import math
+import random
 # Inteligencia artificial del pong
 
 
@@ -123,7 +123,7 @@ class IAcabrona:
         #self.i+=1
         #if self.i>100:
         #    i=-100
-        self.juego.camera.setR(self.juego.camera.getR()+1)
+        self.juego.camera.setR(self.juego.camera.getR()+random.random()*1.5)
         return task.cont
 
 
