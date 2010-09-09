@@ -95,7 +95,11 @@ class MyApp(ShowBase):
 
         #cargando sonidos
         #base=ShowBase()
-        self.sonido=base.loader.loadSfx("sonido.mp3")
+        self.sonidofondo = base.loader.loadSfx("sound/fondo.mp3")
+        self.gol=base.loader.loadSfx("sound/gol.mp3")
+        self.golpe = base.loader.loadSfx("sound/golpe.mp3")
+        self.sonidofondo.setLoop(True)
+        self.sonidofondo.play()
 
 
     def pelotac(self,task):

@@ -17,6 +17,7 @@ class Pelota:
         juego.taskMgr.add(self.update,'control de la pelota', extraArgs=[self], appendTask=True)
 
     def choca(self):
+        self.juego.golpe.play()
         self.vx*=-1
 
         #comprueba contra que jugador
@@ -38,10 +39,11 @@ class Pelota:
 
         if (self.modelo.getX()<-160):
             self.juego.puntojugador2()
+            self.juego.gol.play()
 
         if self.modelo.getX()>200:
             self.juego.puntojugador1()
-            self.juego.sonido.play()
+            self.juego.gol.play()
 
 
         return task.cont
