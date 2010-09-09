@@ -95,9 +95,11 @@ class MyApp(ShowBase):
 
         #cargando sonidos
         #base=ShowBase()
+        #http://www.jamendo.com/es/track/20232
         self.sonidofondo = base.loader.loadSfx("sound/fondo.mp3")
         self.gol=base.loader.loadSfx("sound/gol.mp3")
         self.golpe = base.loader.loadSfx("sound/golpe.mp3")
+        self.sonidovictoria=base.loader.loadSfx("sound/victoria.mp3")
         self.sonidofondo.setLoop(True)
         self.sonidofondo.play()
 
