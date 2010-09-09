@@ -41,6 +41,7 @@ class Pelota:
 
         if self.modelo.getX()>200:
             self.juego.puntojugador1()
+            self.juego.sonido.play()
 
 
         return task.cont

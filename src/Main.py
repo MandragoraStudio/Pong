@@ -6,7 +6,7 @@ from IA import *
 from ManejadorDeColisiones import *
 from marcador import *
 from direct.showbase.ShowBase import ShowBase
-
+from panda3d.core import ConfigVariableString
 
 
 
@@ -15,6 +15,12 @@ from direct.showbase.ShowBase import ShowBase
 class MyApp(ShowBase):
     def __init__(self):
             ShowBase.__init__(self)
+
+            #cambiando variables de configuracion
+            ConfigVariableString('clock-mode','limited')
+            ConfigVariableDouble('clock-frame-rate','60')
+            ConfigVariableString('audio-library-name','p3openal_audio')
+
             # Disable the camera trackball controls.
             self.disableMouse()
 
@@ -86,6 +92,10 @@ class MyApp(ShowBase):
         dlnp2 = render.attachNewNode(dlight2)
         dlnp2.setHpr(180, -20, 0)
         render.setLight(dlnp2)
+
+        #cargando sonidos
+        #base=ShowBase()
+        self.sonido=base.loader.loadSfx("sonido.mp3")
 
 
     def pelotac(self,task):
