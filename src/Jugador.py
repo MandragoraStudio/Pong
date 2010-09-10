@@ -14,6 +14,8 @@ class Jugador:
         self.vx=0
         self.vy=0
         self.vz=0
+        self.primerapersona=False
+        self.humano=humano
 
         #carga el modelo
         self.modelo = juego.loader.loadModel("barra")
@@ -53,4 +55,12 @@ class Jugador:
         if self.modelo.getZ()<self.bordeinferior:
             self.vx=0
             self.modelo.setZ(self.bordeinferior)
+        if self.primerapersona:
+            if self.humano:
+                self.juego.camera.setPos(self.modelo,25,-20,-95)
+
+                self.juego.camera.lookAt(self.juego.pelota.modelo)
+                #self.juego.camera.setP(self.juego.camera.getP()+1)
+                #self.juego.camera.setY(self.juego.camera.getY()+1)
+                self.juego.camera.setR(90)
 	return task.cont

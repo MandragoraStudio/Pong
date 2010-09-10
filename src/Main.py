@@ -53,7 +53,7 @@ class MyApp(ShowBase):
         #carga los jugadores
         self.player1 = Jugador(self)
 
-        self.player2 = Jugador(self)
+        self.player2 = Jugador(self,False)
 
         #coloca al jugador 1
         self.player1.modelo.setR(90)

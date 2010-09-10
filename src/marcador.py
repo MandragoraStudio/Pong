@@ -35,7 +35,7 @@ class Marcador:
             self.puntuacion2.setText(str(self.juego.puntos2))
             if self.juego.puntos1>9:
                 self.gana(1)
-            if self.juego.puntos2>0:
+            if self.juego.puntos2>9:
                 self.gana(2)
 
     def gana(self,quien):
