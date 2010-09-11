@@ -14,7 +14,6 @@ class Jugador:
         self.vx=0
         self.vy=0
         self.vz=0
-        self.primerapersona=False
         self.humano=humano
 
         #carga el modelo
@@ -55,7 +54,7 @@ class Jugador:
         if self.modelo.getZ()<self.bordeinferior:
             self.vx=0
             self.modelo.setZ(self.bordeinferior)
-        if self.primerapersona:
+        if self.juego.primerapersona:
             if self.humano:
                 self.juego.camera.setPos(self.modelo,25,-20,-95)
 
