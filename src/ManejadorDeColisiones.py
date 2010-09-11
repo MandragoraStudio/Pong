@@ -16,7 +16,7 @@ class ManejadorDeColisiones(DirectObject.DirectObject):
         # Create a collision node for this object.
         cNode = CollisionNode('player1')
         # Attach a collision sphere solid to the collision node.
-        cNode.addSolid(CollisionTube(0, 0, 0, 90, 0, 0, 15))
+        cNode.addSolid(CollisionTube(0, 0, 0, 95, 0, 0, 13))
         player1C = self.juego.player1.modelo.attachNewNode(cNode)
         player1C.show()
 
@@ -24,14 +24,14 @@ class ManejadorDeColisiones(DirectObject.DirectObject):
         cNode = CollisionNode('player2')
 
         # Attach a collision sphere solid to the collision node.
-        cNode.addSolid(CollisionTube(0, 0, 0, 90, 0, 0, 15))
+        cNode.addSolid(CollisionTube(0, 0, 0, 95, 0, 0, 13))
         player2C = self.juego.player2.modelo.attachNewNode(cNode)
         player2C.show()
 
         # Create a collision node for this object.
         cNode = CollisionNode('pelota')
         # Attach a collision sphere solid to the collision node.
-        cNode.addSolid(CollisionSphere(0, 0, 0, 1.0))
+        cNode.addSolid(CollisionSphere(0, 0, 0, 37.0))
         pelotaC = self.juego.pelota.modelo.attachNewNode(cNode)
         pelotaC.show()
 

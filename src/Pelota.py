@@ -5,9 +5,8 @@ class Pelota:
     def __init__(self,juego):
         self.juego=juego
         
-        self.i=5
-        self.modelo = juego.loader.loadModel("models/misc/sphere.egg.pz")
-	self.modelo.setScale(1, 1, 1)
+        self.i=0.15
+        self.modelo = juego.loader.loadModel("pelota")
 	self.modelo.reparentTo(juego.render)
         #escala la pelota
         self.modelo.setScale(self.i,self.i,self.i)
@@ -49,9 +48,9 @@ class Pelota:
         return task.cont
 
     def start(self):
-        self.vx=(0.1+random.random()*0.2)*(signo(random.random()-0.5))#velocidad en el eje x
+        self.vx=(0.1+random.random()*10)*(signo(random.random()-0.5))#velocidad en el eje x
         self.vy=0 #velocidad en el eje y (no usar!! es la profundidad)
-        self.vz=(0.1+random.random()*0.2)*(signo(random.random()-0.5)) # velocidad en el eje z
+        self.vz=(0.1+random.random()*10)*(signo(random.random()-0.5)) # velocidad en el eje z
 	self.modelo.setPos(0,0,20)
         self.juego.marcador.update()
         print "Jugador1: "+str(self.juego.puntos1)+" -- Jugador2: "+str(self.juego.puntos2)
