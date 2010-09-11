@@ -48,9 +48,9 @@ class Pelota:
         return task.cont
 
     def start(self):
-        self.vx=(0.1+random.random()*10)*(signo(random.random()-0.5))#velocidad en el eje x
+        self.vx=(12+random.random()*10)*(signo(random.random()-0.5))#velocidad en el eje x
         self.vy=0 #velocidad en el eje y (no usar!! es la profundidad)
-        self.vz=(0.1+random.random()*10)*(signo(random.random()-0.5)) # velocidad en el eje z
+        self.vz=(12+random.random()*10)*(signo(random.random()-0.5)) # velocidad en el eje z
 	self.modelo.setPos(0,0,20)
         self.juego.marcador.update()
         print "Jugador1: "+str(self.juego.puntos1)+" -- Jugador2: "+str(self.juego.puntos2)
