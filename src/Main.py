@@ -47,6 +47,7 @@ class MyApp(ShowBase):
         self.versusIA=True
         self.puntos1=0
         self.puntos2=0
+        self.primerapersona=False
 
     def loadmodels(self):
         #aqui se deben cargar los modelos para el juego
