@@ -15,7 +15,8 @@ class Jugador:
         self.vy=0
         self.vz=0
         self.humano=humano
-
+        self.juego.primerapersona=False
+        
         #carga el modelo
         self.modelo = juego.loader.loadModel("barra")
 	self.modelo.setScale(0.5, 0.5, 0.5)
