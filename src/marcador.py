@@ -40,8 +40,13 @@ class Marcador:
 
     def gana(self,quien):
         cadena="El jugador "+str(quien)+" ha vencido!!"
-        self.juego.sonidovictoria.play()
+
+        if quien ==1:
+            self.juego.sonidovictoria.play()
+        else:
+            self.juego.sonidoderrota.play()
         self.victoria.setText(cadena)
+        self.juego.sonidofondo.stop()
         self.juego.taskMgr.remove("control del jugador")
         self.jugando=False
 

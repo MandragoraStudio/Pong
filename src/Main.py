@@ -101,6 +101,7 @@ class MyApp(ShowBase):
         self.gol=base.loader.loadSfx("sound/gol.mp3")
         self.golpe = base.loader.loadSfx("sound/golpe.mp3")
         self.sonidovictoria=base.loader.loadSfx("sound/victoria.mp3")
+        self.sonidoderrota=base.loader.loadSfx("sound/derrota.mp3")
         self.sonidofondo.setLoop(True)
         self.sonidofondo.play()
 
