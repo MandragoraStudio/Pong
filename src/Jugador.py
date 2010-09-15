@@ -18,7 +18,7 @@ class Jugador:
         self.juego.primerapersona=False
         
         #carga el modelo
-        self.modelo = juego.loader.loadModel("barra")
+        self.modelo = juego.loader.loadModel("Modelos/barra")
 	self.modelo.setScale(0.5, 0.5, 0.5)
 	self.modelo.reparentTo(juego.render)
 

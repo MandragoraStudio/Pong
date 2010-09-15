@@ -78,6 +78,15 @@ class MyApp(ShowBase):
         #inicia el manejador de los eventos de las colisiones
         self.manejador = ManejadorDeColisiones(self)
 
+        self.fondo= loader.loadModel("Modelos/fondo");
+        self.fondo.reparentTo(render)
+        self.fondo.setPos(20,300,-15)
+        self.t=7
+        self.fondo.setScale(self.t,self.t,self.t)
+        self.fondo.setHpr(90, 0, -90)
+        self.tex = loader.loadTexture('Modelos/fondo.jpg')
+        
+        self.fondo.setTexture(self.tex)
 
 
         #coloca la camara

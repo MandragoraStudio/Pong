@@ -1,0 +1,301 @@
+<CoordinateSystem> { Y-Up }
+
+<Comment> {
+  "dae2egg tablero.dae tablero.egg"
+}
+<Texture> Map__4-image {
+  "//C/Users/Antonio/Desktop/posible fondo ingame.jpg"
+  <Scalar> type { 2d }
+  <Scalar> wrapu { repeat }
+  <Scalar> wrapv { repeat }
+  <Scalar> envtype { modulate }
+  <Scalar> uv-name { CHANNEL0 }
+}
+<Material> Material__82 {
+  <Scalar> diffr { 0 }
+  <Scalar> diffg { 0 }
+  <Scalar> diffb { 0 }
+  <Scalar> ambr { 0 }
+  <Scalar> ambg { 0 }
+  <Scalar> ambb { 0 }
+  <Scalar> emitr { 0 }
+  <Scalar> emitg { 0 }
+  <Scalar> emitb { 0 }
+  <Scalar> specr { 0 }
+  <Scalar> specg { 0 }
+  <Scalar> specb { 0 }
+  <Scalar> shininess { 2 }
+}
+<Material> Material__81 {
+  <Scalar> diffr { 1 }
+  <Scalar> diffg { 1 }
+  <Scalar> diffb { 1 }
+  <Scalar> ambr { 0.588 }
+  <Scalar> ambg { 0.588 }
+  <Scalar> ambb { 0.588 }
+  <Scalar> emitr { 0 }
+  <Scalar> emitg { 0 }
+  <Scalar> emitb { 0 }
+  <Scalar> specr { 0 }
+  <Scalar> specg { 0 }
+  <Scalar> specb { 0 }
+  <Scalar> shininess { 2 }
+}
+<Group> Box01 {
+  <Transform> {
+    <Translate> { 0 0 20 }
+    <Rotate> { -90 1 0 0 }
+    <Rotate> { -180 1 0 0 }
+    <Scale> { 2.54 2.54 2.54 }
+  }
+  <Group> Box01-lib {
+    <VertexPool> Box01-lib {
+      <Vertex> 0 {
+        -45 -50.8 -72
+        <UV> { 1 0 }
+        <Normal> { 0 1 2.66316e-007 }
+      }
+      <Vertex> 1 {
+        -45 -50.8 72
+        <UV> { 1 1 }
+        <Normal> { 0 1 2.66316e-007 }
+      }
+      <Vertex> 2 {
+        45 -50.8 72
+        <UV> { 0 1 }
+        <Normal> { 0 1 2.66316e-007 }
+      }
+      <Vertex> 3 {
+        45 -50.8 72
+        <UV> { 0 1 }
+        <Normal> { 0 1 2.66316e-007 }
+      }
+      <Vertex> 4 {
+        45 -50.8 -72
+        <UV> { 0 0 }
+        <Normal> { 0 1 2.66316e-007 }
+      }
+      <Vertex> 5 {
+        -45 -50.8 -72
+        <UV> { 1 0 }
+        <Normal> { 0 1 2.66316e-007 }
+      }
+      <Vertex> 6 {
+        -45 -50.8 -72
+        <UV> { 0 0 }
+        <Normal> { 0 2.66316e-007 -1 }
+      }
+      <Vertex> 7 {
+        45 -50.8 -72
+        <UV> { 1 0 }
+        <Normal> { 0 2.66316e-007 -1 }
+      }
+      <Vertex> 8 {
+        45 -51.8 -72
+        <UV> { 1 1 }
+        <Normal> { 0 2.66316e-007 -1 }
+      }
+      <Vertex> 9 {
+        45 -51.8 -72
+        <UV> { 1 1 }
+        <Normal> { 0 2.66316e-007 -1 }
+      }
+      <Vertex> 10 {
+        -45 -51.8 -72
+        <UV> { 0 1 }
+        <Normal> { 0 2.66316e-007 -1 }
+      }
+      <Vertex> 11 {
+        -45 -50.8 -72
+        <UV> { 0 0 }
+        <Normal> { 0 2.66316e-007 -1 }
+      }
+      <Vertex> 12 {
+        45 -50.8 -72
+        <UV> { 0 0 }
+        <Normal> { 1 0 0 }
+      }
+      <Vertex> 13 {
+        45 -50.8 72
+        <UV> { 1 0 }
+        <Normal> { 1 0 0 }
+      }
+      <Vertex> 14 {
+        45 -51.8 72
+        <UV> { 1 1 }
+        <Normal> { 1 0 0 }
+      }
+      <Vertex> 15 {
+        45 -51.8 72
+        <UV> { 1 1 }
+        <Normal> { 1 0 0 }
+      }
+      <Vertex> 16 {
+        45 -51.8 -72
+        <UV> { 0 1 }
+        <Normal> { 1 0 0 }
+      }
+      <Vertex> 17 {
+        45 -50.8 -72
+        <UV> { 0 0 }
+        <Normal> { 1 0 0 }
+      }
+      <Vertex> 18 {
+        45 -50.8 72
+        <UV> { 0 0 }
+        <Normal> { 0 -2.66316e-007 1 }
+      }
+      <Vertex> 19 {
+        -45 -50.8 72
+        <UV> { 1 0 }
+        <Normal> { 0 -2.66316e-007 1 }
+      }
+      <Vertex> 20 {
+        -45 -51.8 72
+        <UV> { 1 1 }
+        <Normal> { 0 -2.66316e-007 1 }
+      }
+      <Vertex> 21 {
+        -45 -51.8 72
+        <UV> { 1 1 }
+        <Normal> { 0 -2.66316e-007 1 }
+      }
+      <Vertex> 22 {
+        45 -51.8 72
+        <UV> { 0 1 }
+        <Normal> { 0 -2.66316e-007 1 }
+      }
+      <Vertex> 23 {
+        45 -50.8 72
+        <UV> { 0 0 }
+        <Normal> { 0 -2.66316e-007 1 }
+      }
+      <Vertex> 24 {
+        -45 -50.8 72
+        <UV> { 0 0 }
+        <Normal> { -1 0 0 }
+      }
+      <Vertex> 25 {
+        -45 -50.8 -72
+        <UV> { 1 0 }
+        <Normal> { -1 0 0 }
+      }
+      <Vertex> 26 {
+        -45 -51.8 -72
+        <UV> { 1 1 }
+        <Normal> { -1 0 0 }
+      }
+      <Vertex> 27 {
+        -45 -51.8 -72
+        <UV> { 1 1 }
+        <Normal> { -1 0 0 }
+      }
+      <Vertex> 28 {
+        -45 -51.8 72
+        <UV> { 0 1 }
+        <Normal> { -1 0 0 }
+      }
+      <Vertex> 29 {
+        -45 -50.8 72
+        <UV> { 0 0 }
+        <Normal> { -1 0 0 }
+      }
+      <Vertex> 30 {
+        -45 -51.8 -72
+        <UV> { 0 0 }
+        <Normal> { 0 -1 -2.66316e-007 }
+      }
+      <Vertex> 31 {
+        45 -51.8 -72
+        <UV> { 1 0 }
+        <Normal> { 0 -1 -2.66316e-007 }
+      }
+      <Vertex> 32 {
+        45 -51.8 72
+        <UV> { 1 1 }
+        <Normal> { 0 -1 -2.66316e-007 }
+      }
+      <Vertex> 33 {
+        45 -51.8 72
+        <UV> { 1 1 }
+        <Normal> { 0 -1 -2.66316e-007 }
+      }
+      <Vertex> 34 {
+        -45 -51.8 72
+        <UV> { 0 1 }
+        <Normal> { 0 -1 -2.66316e-007 }
+      }
+      <Vertex> 35 {
+        -45 -51.8 -72
+        <UV> { 0 0 }
+        <Normal> { 0 -1 -2.66316e-007 }
+      }
+    }
+    <Group> Box01-lib.Material__81 {
+      <Polygon> {
+        <TRef> { Map__4-image }
+        <MRef> { Material__81 }
+        <VertexRef> { 0 1 2 <Ref> { Box01-lib } }
+      }
+      <Polygon> {
+        <TRef> { Map__4-image }
+        <MRef> { Material__81 }
+        <VertexRef> { 3 4 5 <Ref> { Box01-lib } }
+      }
+      <Polygon> {
+        <TRef> { Map__4-image }
+        <MRef> { Material__81 }
+        <VertexRef> { 6 7 8 <Ref> { Box01-lib } }
+      }
+      <Polygon> {
+        <TRef> { Map__4-image }
+        <MRef> { Material__81 }
+        <VertexRef> { 9 10 11 <Ref> { Box01-lib } }
+      }
+      <Polygon> {
+        <TRef> { Map__4-image }
+        <MRef> { Material__81 }
+        <VertexRef> { 12 13 14 <Ref> { Box01-lib } }
+      }
+      <Polygon> {
+        <TRef> { Map__4-image }
+        <MRef> { Material__81 }
+        <VertexRef> { 15 16 17 <Ref> { Box01-lib } }
+      }
+      <Polygon> {
+        <TRef> { Map__4-image }
+        <MRef> { Material__81 }
+        <VertexRef> { 18 19 20 <Ref> { Box01-lib } }
+      }
+      <Polygon> {
+        <TRef> { Map__4-image }
+        <MRef> { Material__81 }
+        <VertexRef> { 21 22 23 <Ref> { Box01-lib } }
+      }
+      <Polygon> {
+        <TRef> { Map__4-image }
+        <MRef> { Material__81 }
+        <VertexRef> { 24 25 26 <Ref> { Box01-lib } }
+      }
+      <Polygon> {
+        <TRef> { Map__4-image }
+        <MRef> { Material__81 }
+        <VertexRef> { 27 28 29 <Ref> { Box01-lib } }
+      }
+    }
+    <Group> Box01-lib.Material__82 {
+      <Polygon> {
+        <MRef> { Material__82 }
+        <BFace> { 1 }
+        <VertexRef> { 30 31 32 <Ref> { Box01-lib } }
+      }
+      <Polygon> {
+        <MRef> { Material__82 }
+        <BFace> { 1 }
+        <VertexRef> { 33 34 35 <Ref> { Box01-lib } }
+      }
+    }
+  }
+}
+<Table> {
+}

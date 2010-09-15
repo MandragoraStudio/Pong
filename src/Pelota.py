@@ -6,7 +6,7 @@ class Pelota:
         self.juego=juego
         
         self.i=0.15
-        self.modelo = juego.loader.loadModel("pelota")
+        self.modelo = juego.loader.loadModel("Modelos/pelota")
 	self.modelo.reparentTo(juego.render)
         #escala la pelota
         self.modelo.setScale(self.i,self.i,self.i)
