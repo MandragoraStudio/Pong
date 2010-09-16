@@ -52,6 +52,7 @@ class MyApp(ShowBase):
     def loadmodels(self):
         #aqui se deben cargar los modelos para el juego
         #carga los jugadores
+        
         self.player1 = Jugador(self)
 
         self.player2 = Jugador(self,False)
@@ -75,6 +76,7 @@ class MyApp(ShowBase):
 
         #inicia y coloca pelota
         self.pelota = Pelota(self)
+        
         #inicia el manejador de los eventos de las colisiones
         self.manejador = ManejadorDeColisiones(self)
 
@@ -84,9 +86,28 @@ class MyApp(ShowBase):
         self.t=7
         self.fondo.setScale(self.t,self.t,self.t)
         self.fondo.setHpr(90, 0, -90)
-        self.tex = loader.loadTexture('Modelos/fondo.jpg')
+        
+        self.tex = loader.loadTexture('Img/fondo.jpg')
         
         self.fondo.setTexture(self.tex)
+        """
+        
+        self.fondo2= loader.loadModel("Modelos/fondo");
+        self.fondo2.reparentTo(render)
+        self.fondo2.setPos(20,320,-15)
+        self.t2=200
+        self.fondo2.setScale(self.t2,self.t2,self.t2)
+        self.fondo2.setHpr(90, 0, -90)
+        self.tex = loader.loadTexture('Img/fondo.jpg')
+
+        self.fondo2.setTexture(self.tex)
+        """
+        self.laser= loader.loadModel("Modelos/Lasers");
+        self.laser.reparentTo(render)
+        self.laser.setPos(20,10,120)
+        self.t2=7.8
+        self.laser.setScale(self.t2,self.t2,self.t2)
+        self.laser.setHpr(90, 0, -90)
 
 
         #coloca la camara
