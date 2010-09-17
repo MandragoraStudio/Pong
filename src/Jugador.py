@@ -1,4 +1,5 @@
 from Util import *
+from direct.actor.Actor import Actor
 #NOTA: debido a un cambio de coordenadas, la vx mueve al jugador en el eje Z
 #esto es debido a que aunque la vx se aplica al movimiento en el eje X, este esta hecho tomando como referencia el modelo, que esta girado 90 grados
 class Jugador:
@@ -18,8 +19,9 @@ class Jugador:
         self.juego.primerapersona=False
         
         #carga el modelo
-        self.modelo = juego.loader.loadModel("Modelos/barra")
-	self.modelo.setScale(0.5, 0.5, 0.5)
+        
+        self.modelo = Actor("Modelos/barra",{"animacion": "Modelos/barraAni"})
+	self.modelo.setScale(10, 10, 15)
 	self.modelo.reparentTo(juego.render)
 
         #agrega el update del jugador al task manager
