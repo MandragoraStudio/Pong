@@ -7,8 +7,8 @@ class Jugador:
 
     def __init__(self,juego,humano=True):
         #inicializa variables
-        self.bordesuperior=100
-        self.bordeinferior=-100
+        self.bordesuperior=80
+        self.bordeinferior=-120
         self.arriba=False
         self.abajo=False
         self.juego=juego
@@ -20,7 +20,8 @@ class Jugador:
         
         #carga el modelo
         
-        self.modelo = Actor("Modelos/barra",{"animacion": "Modelos/barraAni"})
+        #self.modelo = Actor("Modelos/barra",{"animacion": "Modelos/barraAni"})
+        self.modelo = juego.loader.loadModel("Modelos/barra")
 	self.modelo.setScale(10, 10, 15)
 	self.modelo.reparentTo(juego.render)
 
@@ -29,7 +30,7 @@ class Jugador:
 
     def update(self,unknown,task):
         #update, aqui se actualiza la posicion del jugador asi como sus variables (velocidad principalmente por ahora)
-        paso=0.5 #aceleracion
+        paso=0.3 #aceleracion
         #cambiando la velocidad
 	if self.arriba:
             self.vx-=paso
@@ -39,17 +40,17 @@ class Jugador:
         self.modelo.setPos(self.modelo,self.vx,self.vy,self.vz)
         #rozamiento=0.2
         #self.vx=lerp(self.vx,0,rozamiento)
-        rozamiento = 0.15
+        rozamiento = 0.1
         max = 4
         #aplicando rozamiento
         self.vx-=rozamiento*signo(self.vx)
-        if (self.vx*signo(self.vx)<rozamiento*2):
+        if (self.vx*signo(self.vx)<rozamiento *2):
             self.vx=0
         #velocidades maximas
         if self.vx>max:
             self.vx=max
         if self.vx<-max:
-            self.vx=-max
+            self.vx=- max
         #chocando contra el borde del campo
         if self.modelo.getZ()>self.bordesuperior:
             self.vx=0

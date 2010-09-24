@@ -1,5 +1,5 @@
 import random
-# Inteligencia artificial del pong
+# Inteligencia artificial del pong, necesita mejora con herencia de clases
 
 
 class IA:
@@ -9,13 +9,15 @@ class IA:
 
 
     def update(self,unkown,task):
+        #miramos si la pelota ha pasado del rango de accion de la IA
         if self.pelotahapasado():
+            #si se le ha pasado la pelota se para
             self.parado()
+        #miramos si la pelota esta por encima y si esta vamos a por ella
         elif self.pelotaporencima():
-            #print "---------------------------------arriba"
             self.arriba()
+        #miramos si la pelota esta por encima y si esta vamos a por ella
         elif self.pelotaporabajo():
-            #print "---------------------------------abajo"
             self.abajo()
         else:
             self.parado()
@@ -23,24 +25,23 @@ class IA:
 
 
     def abajo(self):
+        #dejamos de subir
         self.juego.arriba2false()
+        #empezamos a bajar
         self.juego.abajo2true()
 
     def arriba(self):
+        #dejamos de bajar
         self.juego.abajo2false()
+        #empezamos a subir
         self.juego.arriba2true()
 
     def parado(self):
+        #dejamos de subir y de bajar
         self.juego.arriba2false()
         self.juego.abajo2false()
 
     def pelotaporencima(self):
-        #print self.juego.pelota.modelo.getZ()-(self.juego.player2.modelo.getZ())
-        #print "x: "+str(self.juego.player2.modelo.getX())
-        #print "z: "+str(self.juego.player2.modelo.getZ())
-        #print "x1: "+str(self.juego.player1.modelo.getX())
-        #print "z1: "+str(self.juego.player1.modelo.getZ())
-        #print "Jugador1: "+str(self.juego.puntos1)+" -- Jugador2: "+str(self.juego.puntos2)
         return self.juego.pelota.modelo.getZ()-(self.juego.player2.modelo.getZ())>0
 
     def pelotaporabajo(self):
@@ -63,10 +64,8 @@ class IA2:
         if self.pelotahapasado():
             self.parado()
         elif self.pelotaporencima():
-            #print "---------------------------------arriba"
             self.arriba()
         elif self.pelotaporabajo():
-            #print "---------------------------------abajo"
             self.abajo()
         else:
             self.parado()
@@ -86,12 +85,6 @@ class IA2:
         self.juego.abajo2false()
 
     def pelotaporencima(self):
-        #print self.juego.pelota.modelo.getZ()-(self.juego.player2.modelo.getZ())
-        #print "x: "+str(self.juego.player2.modelo.getX())
-        #print "z: "+str(self.juego.player2.modelo.getZ())
-        #print "x1: "+str(self.juego.player1.modelo.getX())
-        #print "z1: "+str(self.juego.player1.modelo.getZ())
-        #print "Jugador1: "+str(self.juego.puntos1)+" -- Jugador2: "+str(self.juego.puntos2)
         return self.juego.pelota.modelo.getZ()-(self.juego.player2.modelo.getZ()-22)>0
 
     def pelotaporabajo(self):
@@ -100,6 +93,7 @@ class IA2:
     def pelotahapasado(self):
         return self.juego.pelota.modelo.getX()-self.juego.player2.modelo.getX()>0
 
+# version mejorada, mas precisa. Version lavadora.
 class IAcabrona:
 
     def __init__(self,juego):
@@ -112,17 +106,12 @@ class IAcabrona:
         if self.pelotahapasado():
             self.parado()
         elif self.pelotaporencima():
-            #print "---------------------------------arriba"
             self.arriba()
         elif self.pelotaporabajo():
-            #print "---------------------------------abajo"
             self.abajo()
         else:
             self.parado()
-        #self.juego.camera.setY( self.juego.camera.getY()+ math.sin((self.i/1)))
-        #self.i+=1
-        #if self.i>100:
-        #    i=-100
+
         self.juego.camera.setR(self.juego.camera.getR()+random.random()*1.5)
         return task.cont
 
@@ -140,12 +129,6 @@ class IAcabrona:
         self.juego.abajo2false()
 
     def pelotaporencima(self):
-        #print self.juego.pelota.modelo.getZ()-(self.juego.player2.modelo.getZ())
-        #print "x: "+str(self.juego.player2.modelo.getX())
-        #print "z: "+str(self.juego.player2.modelo.getZ())
-        #print "x1: "+str(self.juego.player1.modelo.getX())
-        #print "z1: "+str(self.juego.player1.modelo.getZ())
-        #print "Jugador1: "+str(self.juego.puntos1)+" -- Jugador2: "+str(self.juego.puntos2)
         return self.juego.pelota.modelo.getZ()-(self.juego.player2.modelo.getZ()-22)>0
 
     def pelotaporabajo(self):

@@ -1,4 +1,3 @@
-
 from pandac.PandaModules import *
 from Jugador import *
 from Pelota import *
@@ -24,6 +23,7 @@ class MyApp(ShowBase):
             # Disable the camera trackball controls.
             self.disableMouse()
 
+            #iniciamos la partida
             self.inicia_partida()
 
             #self.taskMgr.add(player1c,'control del jugador 1', extraArgs=[self], appendTask=True)
@@ -44,10 +44,15 @@ class MyApp(ShowBase):
         self.arriba1 = False
         self.abajo2 = False
         self.arriba2 = False
+        #variable para determinar el tipo de IA que se va a aplicar
         self.versusIA=True
+        #variable para los puntos del jugador
         self.puntos1=0
+        #variable para los puntos de la IA
         self.puntos2=0
+        #variable para activar o desactivar la opcion de jugar en primera persona
         self.primerapersona=False
+        
 
     def loadmodels(self):
         #aqui se deben cargar los modelos para el juego
@@ -61,18 +66,12 @@ class MyApp(ShowBase):
         self.player1.modelo.setR(90)
         self.player1.modelo.setPos(-130,0,20)
 
-
-
         #coloca al jugador 2
         self.player2.modelo.setR(90)
         self.player2.modelo.setPos(170,0,20)
 
-
-
-
         #iniciar marcador
         self.marcador=Marcador(self)
-
 
         #inicia y coloca pelota
         self.pelota = Pelota(self)
@@ -80,16 +79,20 @@ class MyApp(ShowBase):
         #inicia el manejador de los eventos de las colisiones
         self.manejador = ManejadorDeColisiones(self)
 
+        #cargamos el fondo
         self.fondo= loader.loadModel("Modelos/fondo");
         self.fondo.reparentTo(render)
+
+        #colocamos el fondo
         self.fondo.setPos(20,300,-15)
         self.t=7
         self.fondo.setScale(self.t,self.t,self.t)
         self.fondo.setHpr(90, 0, -90)
-        
+
+        #cargamos la textura del fondo
         self.tex = loader.loadTexture('Img/fondo.jpg')
-        
         self.fondo.setTexture(self.tex)
+        #si activamos esta parte no se veran marcas grises a los lados. Aun espero que me digais como queda mejor
         """
         
         self.fondo2= loader.loadModel("Modelos/fondo");
@@ -102,22 +105,17 @@ class MyApp(ShowBase):
 
         self.fondo2.setTexture(self.tex)
         """
-        self.laser= loader.loadModel("Modelos/Lasers");
-        self.laser.reparentTo(render)
-        self.laser.setPos(20,10,120)
-        self.t2=7.8
-        self.laser.setScale(self.t2,self.t2,self.t2)
-        self.laser.setHpr(90, 0, -90)
-
 
         #coloca la camara
         self.camera.setPos(20,-500,-20)
 
+        #carga y coloca la luz 1
         dlight = DirectionalLight('my dlight')
         dlnp = render.attachNewNode(dlight)
         dlnp.setHpr(20, 20, 0)
         render.setLight(dlnp)
 
+        #carga y coloca la luz 2
         dlight2 = DirectionalLight('my dlight2')
         dlight2.setColor(Vec4(0.2, 0.2, 0.2, 0.1))
         dlnp2 = render.attachNewNode(dlight2)
@@ -125,14 +123,14 @@ class MyApp(ShowBase):
         render.setLight(dlnp2)
 
         #cargando sonidos
-        #base=ShowBase()
-        #http://www.jamendo.com/es/track/20232
         self.sonidofondo = base.loader.loadSfx("sound/fondo.mp3")
         self.gol=base.loader.loadSfx("sound/gol.mp3")
         self.golpe = base.loader.loadSfx("sound/golpe.mp3")
         self.sonidovictoria=base.loader.loadSfx("sound/victoria.mp3")
         self.sonidoderrota=base.loader.loadSfx("sound/derrota.mp3")
+        #ponemos en un bucle el sonido de fondo
         self.sonidofondo.setLoop(True)
+        #empezamos a reproducir el sonido de fondo
         self.sonidofondo.play()
 
 
@@ -148,6 +146,9 @@ class MyApp(ShowBase):
             #    self.a=0
             #self.i+=0.1
             return task.cont
+
+
+
     def arriba1true(self):
             self.player1.arriba= True
     def arriba1false(self):
@@ -174,34 +175,27 @@ class MyApp(ShowBase):
         self.pelota.start()
 
     def inicia_partida(self):
-        
-
-            """
-            # Load the environment model.
-            self.environ = self.loader.loadModel("models/environment")
-            # Reparent the model to render.
-            self.environ.reparentTo(self.render)
-            # Apply scale and position transforms on the model.
-            self.environ.setScale(0.25, 0.25, 0.25)
-            self.environ.setPos(-8, 42, 0)
-            """
 
             # inicializa variables
             self.init_variables()
+            #cargar los modelos graficos y de sonido
             self.loadmodels()
-
+            #introducimos las teclas que debe escuchar por teclado para el jugador 1
             self.accept('w',self.arriba1true)
             self.accept('w-up',self.arriba1false)
             self.accept('s',self.abajo1true)
             self.accept('s-up',self.abajo1false)
             #inicia la IA o habilita el control del segundo jugador segun la variable "versusIA"
             if(self.versusIA==False):
+                #introducimos las teclas que debe escuchar por teclado para el jugador 1
                 self.accept('o',self.arriba2true)
                 self.accept('o-up',self.arriba2false)
                 self.accept('l',self.abajo2true)
                 self.accept('l-up',self.abajo2false)
             else:
+                #si vamos a jugar con IA elegimos con la que queremos jugar
                 self.Ia=IA2(self)
+                #metemos el metodo update de la IA al task Manager
                 self.taskMgr.add(self.Ia.update,'IA', extraArgs=[self], appendTask=True)
  
 app = MyApp()

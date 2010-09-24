@@ -33,7 +33,7 @@ class Pelota:
         self.modelo.setPos(self.modelo,self.vx,self.vy,self.vz)
 
         #colision de la pelota contra los bordes superiores e inferiores
-	if (self.modelo.getZ()+25)*signo(self.modelo.getZ())>120:
+	if (self.modelo.getZ()+20)*signo(self.modelo.getZ())>120:
             self.vz*=-1
 
         if (self.modelo.getX()<-160):
