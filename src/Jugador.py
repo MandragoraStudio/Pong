@@ -19,8 +19,7 @@ class Jugador:
         
         #carga el modelo
         
-        #self.modelo = Actor("Modelos/barra",{"animacion": "Modelos/barraAni"})
-        self.modelo = juego.loader.loadModel("Modelos/barra")
+        self.modelo = Actor("Modelos/barra",{"animacion": "Modelos/barraAni"})
 	self.modelo.setScale(10, 10, 15)
 	self.modelo.reparentTo(juego.render)
 

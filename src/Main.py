@@ -185,7 +185,7 @@ class MyApp(ShowBase):
             self.accept('s-up',self.abajo1false)
             #inicia la IA o habilita el control del segundo jugador segun la variable "versusIA"
             if(self.versusIA==False):
-                #introducimos las teclas que debe escuchar por teclado para el jugador 1
+                #introducimos las teclas que debe escuchar por teclado para el jugador 2
                 self.accept('o',self.arriba2true)
                 self.accept('o-up',self.arriba2false)
                 self.accept('l',self.abajo2true)
