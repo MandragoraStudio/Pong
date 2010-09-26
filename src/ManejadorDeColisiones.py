@@ -15,7 +15,7 @@ class ManejadorDeColisiones(DirectObject.DirectObject):
 
         # Create a collision node for this object.
         cNode = CollisionNode('player1')
-        # Attach a collision sphere solid to the collision node.
+        # Attach a collision Tube solid to the collision node.
         cNode.addSolid(CollisionTube(0, 0, 0, 5.3, 0, 0, 0.6))
         player1C = self.juego.player1.modelo.attachNewNode(cNode)
         player1C.setPos(self.juego.player1.modelo, -2.6, 0, 0)
@@ -24,7 +24,7 @@ class ManejadorDeColisiones(DirectObject.DirectObject):
         # Create a collision node for this object.
         cNode = CollisionNode('player2')
 
-        # Attach a collision sphere solid to the collision node.
+        # Attach a collision Tube solid to the collision node.
         cNode.addSolid(CollisionTube(0, 0, 0, 5.3, 0, 0, 0.6))
         player2C = self.juego.player2.modelo.attachNewNode(cNode)
         player2C.setPos(self.juego.player2.modelo, -2.6, 0, 0)

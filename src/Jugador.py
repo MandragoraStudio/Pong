@@ -39,7 +39,7 @@ class Jugador:
         self.modelo.setPos(self.modelo,self.vx,self.vy,self.vz)
         #rozamiento=0.2
         #self.vx=lerp(self.vx,0,rozamiento)
-        rozamiento = 0.1
+        rozamiento = 1
         max = 4
         #aplicando rozamiento
         self.vx-=rozamiento*signo(self.vx)
