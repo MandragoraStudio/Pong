@@ -24,7 +24,13 @@ class Pelota:
         if self.modelo.getX()>0:
             self.jugador=self.juego.player2
         #impulso vertical dado a la pelota por el jugador
-        self.vz=self.vz-(self.jugador.vx/20)
+        #self.vz=(self.vz-(self.jugador.vx*1))
+        #nuevo sistema de impulso, binario, o arriba o abajo
+        if self.jugador.modelo.getX()!=0:
+            if self.jugador.modelo.getX()>0:
+                self.vz=self.vz-5
+            else:
+                self.vz=self.vz+5
         #aceleracion horizontal de la pelota con cada choque
         self.vx+=1.25*signo(self.vx)
 
@@ -34,6 +40,9 @@ class Pelota:
 
         #colision de la pelota contra los bordes superiores e inferiores
 	if (self.modelo.getZ()+20)*signo(self.modelo.getZ())>120:
+            #intento de que vuelva a la posicion maxima por si se pasa
+            #self.modelo.setZ(self.modelo.getZ()-(((self.modelo.getZ()+20)-120)*signo(self.modelo.getZ())))
+            #cambio de sentido
             self.vz*=-1
 
         if (self.modelo.getX()<-160):

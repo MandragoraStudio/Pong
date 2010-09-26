@@ -28,8 +28,12 @@ class Jugador:
         juego.taskMgr.add(self.update,'control del jugador', extraArgs=[self], appendTask=True)
 
     def update(self,unknown,task):
+        #IMPORTANTE
+        #modificador de velocidad, si te parece que los jugadores van rapido o lento
+        #toca solo este valor
+        modificadorvelocidad=2
         #update, aqui se actualiza la posicion del jugador asi como sus variables (velocidad principalmente por ahora)
-        paso=0.3 #aceleracion
+        paso=0.03*modificadorvelocidad #aceleracion
         #cambiando la velocidad
 	if self.arriba:
             self.vx-=paso
@@ -39,8 +43,8 @@ class Jugador:
         self.modelo.setPos(self.modelo,self.vx,self.vy,self.vz)
         #rozamiento=0.2
         #self.vx=lerp(self.vx,0,rozamiento)
-        rozamiento = 0.1
-        max = 4
+        rozamiento = 0.007*modificadorvelocidad
+        max = 0.1*modificadorvelocidad
         #aplicando rozamiento
         self.vx-=rozamiento*signo(self.vx)
         if (self.vx*signo(self.vx)<rozamiento *2):
