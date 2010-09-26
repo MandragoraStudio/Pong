@@ -50,8 +50,6 @@ class MyApp(ShowBase):
         self.puntos1=0
         #variable para los puntos de la IA
         self.puntos2=0
-        #variable para activar o desactivar la opcion de jugar en primera persona
-        self.primerapersona=False
         
 
     def loadmodels(self):
@@ -192,6 +190,7 @@ class MyApp(ShowBase):
                 self.accept('o-up',self.arriba2false)
                 self.accept('l',self.abajo2true)
                 self.accept('l-up',self.abajo2false)
+                
             else:
                 #si vamos a jugar con IA elegimos con la que queremos jugar
                 self.Ia=IA2(self)

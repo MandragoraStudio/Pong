@@ -26,7 +26,7 @@ class Pelota:
         #impulso vertical dado a la pelota por el jugador
         self.vz=self.vz-(self.jugador.vx/20)
         #aceleracion horizontal de la pelota con cada choque
-        self.vx+=0.01*signo(self.vx)
+        self.vx+=1.25*signo(self.vx)
 
     def update(self,unkown,task):
         #movimiento de la pelota
